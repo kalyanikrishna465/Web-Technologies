@@ -1,20 +1,29 @@
-// App.js
+// src/App.js
 import React from 'react';
 import Header from './components/Header';
-import Contents from './components/Contents';
+import LoginForm from './components/LoginForm';
+import Footer from './components/Footer';
+import background from './background.jpg'; // Import the background image
+import './App.css';
 
 function App() {
-  const appStyle = {
-    fontFamily: 'Arial, sans-serif',
-    color: '#333',
-    minHeight: '100vh',
-    backgroundColor: 'white',
-  };
-
   return (
-    <div style={appStyle}>
+    <div style={{ 
+      backgroundImage: `url(${background})`, // Use the imported image
+      backgroundSize: 'cover',               // Correct camel case
+      backgroundPosition: 'center',          // Correct camel case
+      backgroundRepeat: 'no-repeat',         // Correct camel case
+      minHeight: '100vh',                    // Change to minHeight to ensure it covers all content
+      margin: 0,
+      display: 'flex', 
+      flexDirection: 'column', 
+      justifyContent: 'space-between', 
+      color: 'white', 
+      fontFamily: 'Arial, sans-serif' 
+    }}>
       <Header />
-      <Contents />
+      <LoginForm />
+      <Footer />
     </div>
   );
 }
