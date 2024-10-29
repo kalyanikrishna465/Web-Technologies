@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation Example</title>
+    <style>
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <h1>Form with JavaScript Validation</h1>
+
+    <form id="myForm" onsubmit="return validateForm()">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"><br><br>
+
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email"><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="errorMessages" class="error"></div>
+
+    <script>
+        function validateForm() {
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            var errorMessages = "";
+
+            if (name === "") {
+                errorMessages += "Name is required.<br>";
+            }
+
+            var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            if (email === "") {
+                errorMessages += "Email is required.<br>";
+            } else if (!emailPattern.test(email)) {
+                errorMessages += "Please enter a valid email address.<br>";
+            }
+
+            if (password === "") {
+                errorMessages += "Password is required.<br>";
+            } else if (password.length < 6) {
+                errorMessages += "Password must be at least 6 characters long.<br>";
+            }
+
+            document.getElementById("errorMessages").innerHTML = errorMessages;
+
+            return errorMessages === "";
+        }
+    </script>
+</body>
+</html>
